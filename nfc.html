@@ -138,7 +138,8 @@ if (!("NDEFReader" in window))
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
       log(`> Serial Number: ${serialNumber}`);
       <!--log(`> Records: (${message.records.length})`);-->
-      log(`> Records: (${message.records.text})`);
+      log(`> Records: (${message.records})`);      
+      log(`> Records: (${record.recordType})`);
       <!--log(`> Records: (${record.data})`);-->
     });
   } catch (error) {
