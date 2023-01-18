@@ -129,6 +129,15 @@ if (!("NDEFReader" in window))
   try {
     const ndef = new NDEFReader();
     await ndef.scan();
+    ndef.onreading = async (event) => {
+    const decoder = new TextDecoder();
+    for (const record of event.message.records) {
+      log("Record type:  " + record.recordType);
+      log("MIME type:    " + record.mediaType);
+      log("=== data ===\n" + decoder.decode(record.data));
+    }
+    
+    
     log("> Scan2 started");
 
     ndef.addEventListener("readingerror", () => {
